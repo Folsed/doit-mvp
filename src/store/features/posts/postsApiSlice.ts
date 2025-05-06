@@ -26,7 +26,7 @@ export const postsApiSlice = createApi({
             },
             providesTags: ['Post'],
         }),
-        addPost: build.mutation<IPost, Partial<IPost>>({
+        createPost: build.mutation<IPost, Partial<IPost>>({
             query: newPost => ({
                 url: 'posts',
                 method: 'POST',
@@ -47,7 +47,7 @@ export const postsApiSlice = createApi({
 export const {
     useGetPostsQuery,
     useGetPostQuery,
-    useAddPostMutation,
+    useCreatePostMutation,
     useDeletePostMutation,
     useGetPostCommentsQuery,
 } = postsApiSlice

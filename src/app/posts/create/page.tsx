@@ -1,4 +1,6 @@
+import CreatePostStepper from "./components/CreatePostStepper"
+
 const CreatePostPage = () => {
-    return <div>CreatePostPage</div>
+    return <CreatePostStepper/>
 }
 export default CreatePostPage
