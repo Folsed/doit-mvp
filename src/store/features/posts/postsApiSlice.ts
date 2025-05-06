@@ -14,7 +14,7 @@ export const postsApiSlice = createApi({
             },
             providesTags: ['Post'],
         }),
-        getPost: build.query<IPost, { id: string }>({
+        getPost: build.query<IPost, { id: number }>({
             query: ({ id }) => {
                 return `posts/${id}`
             },
@@ -28,8 +28,8 @@ export const postsApiSlice = createApi({
             }),
             invalidatesTags: ['Post'],
         }),
-        deletePost: build.mutation<IPost, { id: number }>({
-            query: ({ id }) => ({
+        deletePost: build.mutation<{ success: boolean; id: number }, number>({
+            query: id => ({
                 url: `posts/${id}`,
                 method: 'DELETE',
             }),
