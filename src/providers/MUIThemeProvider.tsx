@@ -22,6 +22,7 @@ function MUIThemeProvider({ children }: { children: React.ReactNode }) {
                         palette: {
                             primary: {
                                 main: blue['600'],
+                                light: blue['100'],
                             },
                             secondary: purple,
                         },
@@ -29,7 +30,7 @@ function MUIThemeProvider({ children }: { children: React.ReactNode }) {
                     dark: {
                         palette: {
                             primary: {
-                                main: blue['900'],
+                                main: blue['700'],
                             },
                             secondary: red,
                             background: {

@@ -1,11 +1,4 @@
-import {
-    Box,
-    List,
-    ListItem,
-    ListItemButton,
-    ListItemIcon,
-    ListItemText,
-} from '@mui/material'
+import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 import HomeIcon from '@mui/icons-material/Home'
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted'
 import AddCircleIcon from '@mui/icons-material/AddCircle'
@@ -27,12 +20,10 @@ const DrawerList: React.FC<IDrawerListProps> = ({ toggleDrawer }) => {
             <List>
                 {_linksList.map(item => (
                     <ListItem key={item.title} disablePadding>
-                        <Link href={item.link} className='w-full'>
-                            <ListItemButton component='div'>
-                                <ListItemIcon>{item.icon}</ListItemIcon>
-                                <ListItemText primary={item.title} />
-                            </ListItemButton>
-                        </Link>
+                        <ListItemButton component={Link} href={item.link}>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText primary={item.title} />
+                        </ListItemButton>
                     </ListItem>
                 ))}
             </List>
