@@ -3,6 +3,7 @@ import { AppBar, Box, Drawer, IconButton, Toolbar, Typography } from '@mui/mater
 import MenuIcon from '@mui/icons-material/Menu'
 import { useState } from 'react'
 import DrawerList from './DrawerList'
+import ToggleThemeButton from '../ui/ToggleThemeButton'
 
 const Header = () => {
     const [open, setOpen] = useState<boolean>(false)
@@ -13,7 +14,7 @@ const Header = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position='static'>
+            <AppBar position='static' enableColorOnDark>
                 <Toolbar>
                     <IconButton
                         onClick={toggleDrawer(true)}
@@ -31,6 +32,7 @@ const Header = () => {
                     <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
                         DOiT MVP
                     </Typography>
+                    <ToggleThemeButton />
                 </Toolbar>
             </AppBar>
         </Box>

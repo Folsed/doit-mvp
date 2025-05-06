@@ -12,6 +12,14 @@ html {
     box-sizing: border-box;
 }
 
+html[class='dark'] .light-img {
+    display: none !important;
+}
+
+html[class='light'] .dark-img {
+    display: none !important;
+}
+
 body {
     font-family: var(--font-rubik);
 }
