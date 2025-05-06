@@ -14,7 +14,7 @@ export const postsApiSlice = createApi({
             },
             providesTags: ['Post'],
         }),
-        getPost: build.query<IPost, { id: number }>({
+        getPost: build.query<IPost, { id: string }>({
             query: ({ id }) => {
                 return `posts/${id}`
             },
