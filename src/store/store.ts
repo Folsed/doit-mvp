@@ -1,12 +1,13 @@
 import { Action, combineSlices, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import { postsApiSlice } from './features/posts/postsApiSlice'
 
-const rootReducer = combineSlices()
+const rootReducer = combineSlices(postsApiSlice)
 
 export const makeStore = () => {
     return configureStore({
         reducer: rootReducer,
         middleware: getDefaulMiddleware => {
-            return getDefaulMiddleware().concat()
+            return getDefaulMiddleware().concat(postsApiSlice.middleware)
         },
     })
 }

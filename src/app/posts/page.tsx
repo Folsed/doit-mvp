@@ -1,4 +1,10 @@
+import PostsGrid from './components/PostsGrid'
+
 const PostsPage = () => {
-    return <div>PostsPage</div>
+    return (
+        <div>
+            <PostsGrid />
+        </div>
+    )
 }
 export default PostsPage
