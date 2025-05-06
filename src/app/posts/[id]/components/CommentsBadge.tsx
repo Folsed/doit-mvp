@@ -17,8 +17,6 @@ export const CommentsBadge: React.FC<IPostCommentsProps> = ({ id }) => {
 
     const badgeMessagesCount = comments?.length ?? 0
 
-    console.log(open)
-
     return (
         <div>
             <IconButton

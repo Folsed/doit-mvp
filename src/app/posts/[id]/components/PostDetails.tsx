@@ -31,8 +31,6 @@ const PostDetails = ({ id }: IPostDetailsProps) => {
     if (isError) return <b>Тут немає поста</b>
     if (isLoading || !post) return <PostSkeletonDetails />
 
-    
-
     return (
         <Container maxWidth='md' sx={{ mt: 4 }}>
             <Card elevation={1}>

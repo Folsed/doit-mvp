@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DOiT MVP
 
-## Getting Started
+A minimal viable product for the DOiT blogging platform, built with Next.js, React, Redux Toolkit, and Material UI.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **List Posts:** Fetch and display all blog posts with skeleton loaders for improved UX.
+- **Post Details:** View individual post content on a dedicated page.
+- **Create Post:** Multi-step form using a Stepper component, including title, body, and preview modal.
+- **Theme Toggle:** Switch between light and dark modes, with persistent preference.
+- **Responsive Design:** Optimized for various screen sizes using Material UI and responsive layouts.
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://reactjs.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/) & RTK Query
+- [Material UI (MUI)](https://mui.com/)
+- TypeScript
+- ESLint & Prettier
+
+## Project Structure
+
+```
+├── app
+│   ├── components                       # Components rendered by App Router pages
+│   │   └── HeroBanner.tsx               # Welcome banner on the home page
+│   ├── globals.css                      # Global styles for the entire application
+│   ├── layout.tsx                       # Root layout (Header, theme providers, etc.)
+│   ├── page.tsx                         # Home page (/)
+│   └── posts                            # Route folder for /posts
+│      ├── components                    # Inner components for the posts section
+│      │   ├── FloatingActionButton.tsx  # “Create Post” floating action button
+│      │   ├── PostCard.tsx              # Card component for individual post
+│      │   └── PostsGrid.tsx             # Grid layout for listing posts
+│      ├── create                        # Route folder for /posts/create
+│      │   ├── components                # Stepper and preview dialog components
+│      │   └── page.tsx                  # Multi-step form page for creating a post
+│      ├── page.tsx                      # Posts listing page (/posts)
+│      └── [id]                          # Dynamic route folder for /posts/[id]
+│         ├── components                 # Components for post details
+│         └── page.tsx                   # Detailed post page
+├── components                           # Global ui components
+│   ├── header                           # Header-related components
+│   │   ├── DrawerList.tsx               # Sidebar navigation items
+│   │   └── Header.tsx                   # AppBar with theme toggle and drawer
+│   └── ui                               # Reusable UI elements
+│      ├── skeletons                     # Loading skeleton components
+│      │   ├── PostSkeletonCard.tsx      # Skeleton for post cards
+│      │   └── PostSkeletonDetails.tsx   # Skeleton for post details
+│      └── ToggleThemeButton.tsx         # Dark/light mode switch
+├── providers
+│   ├── MUIThemeProvider.tsx             # Material UI theme provider with CSS vars
+│   ├── Providers.tsx                    # Wrapper for all context providers (Theme, Redux)
+│   └── StoreProvider.tsx                # Redux store provider
+├── store
+│   ├── features                         # Redux Toolkit slices / API slices
+│   │   └── posts
+│   │      └── postsApiSlice.ts          # RTK Query API slice for posts
+│   ├── hooks.ts                         # Typed hooks for useSelector and useDispatch
+│   └── store.ts                         # Redux store configuration
+├── types
+│   ├── index.ts                         # Shared TypeScript types
+│   └── posts.types.ts                   # Types for post data models
+└── utils
+   └── handleDelete.ts                   # Utility for handling delete actions (API call + confirm)
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    git clone https://github.com/your-username/doit-mvp.git
+    cd doit-mvp
+    ```
 
-## Learn More
+2. **Install dependencies**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Run the development server**
+    ```bash
+    npm run dev
+    # or
+    yarn dev
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Your app should now be running at [`http://localhost:3000`](http://localhost:3000).
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **View Posts:** Go to `/posts` to see all posts.
+- **Create Post:** Go to `/posts/create` to use the stepper form and preview your post before submitting.
+- **Post Details:** Click on a post card to navigate to its detail page.
+- **Theme Toggle:** Use the button in the header to switch between light and dark modes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/YourFeature`.
+3. Commit your changes: `git commit -m "Add YourFeature"`.
+4. Push to the branch: `git push origin feature/YourFeature`.
+5. Open a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
