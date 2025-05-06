@@ -17,12 +17,12 @@ const modalStyle = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 500,
+    width: { xs: '90%', sm: 500 },
     maxHeight: '80vh',
     bgcolor: 'background.paper',
     borderRadius: 2,
     boxShadow: 24,
-    p: 3,
+    p: { xs: 2, sm: 3 },
     overflowY: 'auto' as const,
 }
 
