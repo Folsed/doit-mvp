@@ -5,8 +5,9 @@ import Header from '@/components/header/Header'
 import Providers from '@/providers/Providers'
 
 const rubik = Rubik({
+    weight: ['300', '400', '500', '700'],
+    style: 'normal',
     subsets: ['latin'],
-    variable: '--font-rubik',
 })
 export const metadata: Metadata = {
     title: 'DOiT MVP',
@@ -20,7 +21,7 @@ const RootLayout = ({
 }>) => {
     return (
         <html lang='en'>
-            <body className={`${rubik.variable}`}>
+            <body className={`${rubik.className} antialiased`}>
                 <Providers>
                     <Header />
                     {children}
