@@ -8,6 +8,7 @@ const rubik = Rubik({
     weight: ['300', '400', '500', '700'],
     style: 'normal',
     subsets: ['latin'],
+    variable: '--font-rubik',
 })
 export const metadata: Metadata = {
     title: 'DOiT MVP',
@@ -21,7 +22,7 @@ const RootLayout = ({
 }>) => {
     return (
         <html lang='en'>
-            <body className={`${rubik.className} antialiased`}>
+            <body className={`${rubik.variable} antialiased`}>
                 <Providers>
                     <Header />
                     {children}
