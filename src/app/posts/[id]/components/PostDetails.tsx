@@ -1,5 +1,4 @@
 'use client'
-
 import { useDeletePostMutation, useGetPostQuery } from '@/store/features/posts/postsApiSlice'
 import {
     Container,
@@ -16,29 +15,23 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import Link from 'next/link'
 import { PostSkeletonDetails } from '@/components/ui/skeletons/PostSkeletonDetails'
-import { useRouter } from 'next/navigation'
+import { useHandleDelete } from '@/utils/handleDelete'
 
 interface IPostDetailsProps {
     id: number
 }
 
 const PostDetails = ({ id }: IPostDetailsProps) => {
-    const { data: post, isLoading } = useGetPostQuery({ id })
+    const { data: post, isLoading, isError } = useGetPostQuery({ id })
     const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation()
-    const router = useRouter()
+    const handleDelete = useHandleDelete(deletePost, {
+        redirectTo: '/posts',
+    })
 
+    if (isError) return <b>Тут немає поста</b>
     if (isLoading || !post) return <PostSkeletonDetails />
 
-    const handleDelete = async (id: number) => {
-        if (confirm('Бажаєте видалити цей пост?')) {
-            try {
-                await deletePost(id).unwrap()
-                router.push('/posts')
-            } catch (error) {
-                console.error('Помилка :(', error)
-            }
-        }
-    }
+    
 
     return (
         <Container maxWidth='md' sx={{ mt: 4 }}>

@@ -1,4 +1,4 @@
-import { IPost } from '@/types'
+import { IComment, IPost } from '@/types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const postsApiSlice = createApi({
@@ -20,6 +20,12 @@ export const postsApiSlice = createApi({
             },
             providesTags: ['Post'],
         }),
+        getPostComments: build.query<IComment[], { id: number }>({
+            query: ({ id }) => {
+                return `posts/${id}/comments`
+            },
+            providesTags: ['Post'],
+        }),
         addPost: build.mutation<IPost, Partial<IPost>>({
             query: newPost => ({
                 url: 'posts',
@@ -38,5 +44,10 @@ export const postsApiSlice = createApi({
     }),
 })
 
-export const { useGetPostsQuery, useGetPostQuery, useAddPostMutation, useDeletePostMutation } =
-    postsApiSlice
+export const {
+    useGetPostsQuery,
+    useGetPostQuery,
+    useAddPostMutation,
+    useDeletePostMutation,
+    useGetPostCommentsQuery,
+} = postsApiSlice

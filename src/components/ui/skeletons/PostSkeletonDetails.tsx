@@ -1,7 +1,7 @@
 import { Card, CardActions, CardContent, CardHeader, Container, Skeleton } from '@mui/material'
 
 export const PostSkeletonDetails = () => (
-    <Container maxWidth='sm' sx={{ mt: 4 }}>
+    <Container maxWidth='md' sx={{ mt: 4 }}>
         <Card elevation={1}>
             <CardHeader
                 avatar={<Skeleton variant='circular' width={40} height={40} />}

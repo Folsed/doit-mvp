@@ -14,6 +14,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import Link from 'next/link'
 import { IPost } from '@/types'
 import { useDeletePostMutation } from '@/store/features/posts/postsApiSlice'
+import { useHandleDelete } from '@/utils/handleDelete'
 
 interface IPostCardProps {
     post: IPost
@@ -22,16 +23,7 @@ interface IPostCardProps {
 
 export const PostCard: React.FC<IPostCardProps> = ({ post, gridSizes }) => {
     const [deletePost, { isLoading: isDeleting }] = useDeletePostMutation()
-
-    const handleDelete = async (id: number) => {
-        if (confirm('Бажаєте видалити цей пост?')) {
-            try {
-                await deletePost(id).unwrap()
-            } catch (error) {
-                console.error('Помилка :(', error)
-            }
-        }
-    }
+    const handleDelete = useHandleDelete(deletePost)
 
     return (
         <Grid size={{ ...gridSizes }}>
